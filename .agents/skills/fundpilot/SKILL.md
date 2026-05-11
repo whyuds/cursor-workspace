@@ -358,7 +358,7 @@ write('~/.openclaw/media/qqbot/downloads/报告名称.html', html);
 
 ## 数据存储
 
-所有数据存储在本 skill 目录下的 `.fundpilot/fundpilot.db`（与 `package.json` 同级，SQLite 数据库）
+所有数据存储在本 skill 目录下的 `.fundpilot/fundpilot.db`（与 `package.json` 同级，SQLite 数据库）。**该文件纳入 Git 版本管理**，便于多环境同步；若含真实持仓且仓库为公开，请注意隐私与合规。
 
 ## 注意事项
 

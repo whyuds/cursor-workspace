@@ -4,9 +4,9 @@ node_modules/
 # Build output
 dist/*.js.map
 
-# Database (user data, not to be synced)
-.fundpilot/
+# Database：忽略任意目录下的 *.db，但保留本 skill 的 canonical 库文件
 *.db
+!.fundpilot/fundpilot.db
 *.db-journal
 
 # OS files
