@@ -92,7 +92,7 @@ fundpilot operation add --code=000001 --type=buy --amount=500 --price=1.5 --json
 
 ## 数据存储
 
-SQLite 数据库: `~/.fundpilot/fundpilot.db`
+SQLite 数据库: `.fundpilot/fundpilot.db`（位于本 skill 目录下）
 
 ## 技术栈
 

@@ -21,10 +21,10 @@ exports.listOperations = listOperations;
 exports.initDatabase = initDatabase;
 const sql_js_1 = __importDefault(require("sql.js"));
 const path_1 = __importDefault(require("path"));
-const os_1 = __importDefault(require("os"));
 const fs_1 = __importDefault(require("fs"));
-// 数据库文件路径
-const DB_DIR = path_1.default.join(os_1.default.homedir(), '.fundpilot');
+// 数据库保存在本 skill 目录下（与 package.json 同级），便于与工作区一并迁移
+const SKILL_ROOT = path_1.default.resolve(__dirname, '..');
+const DB_DIR = path_1.default.join(SKILL_ROOT, '.fundpilot');
 const DB_PATH = path_1.default.join(DB_DIR, 'fundpilot.db');
 // 确保目录存在
 if (!fs_1.default.existsSync(DB_DIR)) {
