@@ -74,10 +74,10 @@ const positionCmd = program.command('position').description('持仓管理');
 
 positionCmd
   .command('upsert')
-  .description('更新持仓')
+  .description('更新持仓（省略 --cost 时：已有持仓保留原成本；新建持仓用当日净值）')
   .requiredOption('--code <code>', '基金代码')
   .requiredOption('--shares <shares>', '份额', parseFloat)
-  .requiredOption('--cost <cost>', '成本', parseFloat)
+  .option('--cost <cost>', '持仓成本单价（可选）', parseFloat)
   .option('--json', '输出 JSON 格式', true)
   .action(async (options) => {
     await runAsync(() => handlePositionUpsert(options));
