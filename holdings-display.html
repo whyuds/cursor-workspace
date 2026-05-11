@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>持仓一览 · FundPilot</title>
+<style>
+:root {
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #1a1d21;
+  --muted: #6b7280;
+  --accent: #5b21b6;
+  --border: #e5e7eb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.55;
+  padding: 16px;
+  padding-bottom: 48px;
+}
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+header {
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 50%, #a78bfa 100%);
+  color: #fff;
+  padding: 22px 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 24px rgba(91, 33, 182, 0.22);
+}
+header h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+header .meta {
+  opacity: 0.92;
+  font-size: 0.88rem;
+}
+.summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.stat {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.stat .num {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+.stat .lbl {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+thead th {
+  background: #f9fafb;
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid var(--border);
+}
+tbody td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: #fafafa; }
+.code { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.82rem; }
+.amt { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; white-space: nowrap; }
+.name { font-weight: 500; }
+.idx { color: var(--muted); width: 2.5rem; }
+tfoot td {
+  font-weight: 700;
+  background: #f3f4f6;
+  padding: 12px;
+}
+.note {
+  margin-top: 16px;
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: #fefce8;
+  border: 1px solid #fde047;
+  border-radius: 10px;
+}
+footer {
+  margin-top: 24px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+}
+@media (min-width: 480px) {
+  .summary { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>持仓一览</h1>
+    <div class="meta">数据来源：FundPilot 本地库 · 生成时间 2026-05-11 14:41:47</div>
+  </header>
+
+  <div class="summary">
+    <div class="stat">
+      <div class="num">¥ 25,320.09</div>
+      <div class="lbl">持仓金额合计（元）</div>
+    </div>
+    <div class="stat">
+      <div class="num">22</div>
+      <div class="lbl">持有基金只数</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th class="idx">#</th>
+          <th>基金名称</th>
+          <th>代码</th>
+          <th style="text-align:right">持仓金额（元）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="idx">1</td><td class="name">永赢先锋半导体智选混合C</td><td class="code">025209</td><td class="amt">5,000.00</td></tr>
+        <tr><td class="idx">2</td><td class="name">东方阿尔法科技智选混合C</td><td class="code">025500</td><td class="amt">5,000.00</td></tr>
+        <tr><td class="idx">3</td><td class="name">广发远见智选混合C</td><td class="code">016874</td><td class="amt">2,000.00</td></tr>
+        <tr><td class="idx">4</td><td class="name">国泰全指通信设备ETF联接E</td><td class="code">022500</td><td class="amt">1,553.84</td></tr>
+        <tr><td class="idx">5</td><td class="name">国泰半导体制造精选混合C</td><td class="code">025687</td><td class="amt">1,351.84</td></tr>
+        <tr><td class="idx">6</td><td class="name">博时科创板芯片ETF联接C</td><td class="code">022726</td><td class="amt">1,283.50</td></tr>
+        <tr><td class="idx">7</td><td class="name">广发碳中和主题混合C</td><td class="code">018419</td><td class="amt">1,118.67</td></tr>
+        <tr><td class="idx">8</td><td class="name">天弘全球新能源汽车C</td><td class="code">016823</td><td class="amt">1,058.59</td></tr>
+        <tr><td class="idx">9</td><td class="name">摩根纳斯达克100指数C</td><td class="code">019173</td><td class="amt">1,058.22</td></tr>
+        <tr><td class="idx">10</td><td class="name">南方有色金属ETF联接C</td><td class="code">004433</td><td class="amt">1,046.18</td></tr>
+        <tr><td class="idx">11</td><td class="name">华宝细分化工ETF联接C</td><td class="code">012538</td><td class="amt">1,009.71</td></tr>
+        <tr><td class="idx">12</td><td class="name">博时纳斯达克100ETF联接C</td><td class="code">016057</td><td class="amt">942.28</td></tr>
+        <tr><td class="idx">13</td><td class="name">广发纳斯达克100ETF联接C</td><td class="code">006479</td><td class="amt">884.58</td></tr>
+        <tr><td class="idx">14</td><td class="name">易方达全球成长精选混合C</td><td class="code">012922</td><td class="amt">711.53</td></tr>
+        <tr><td class="idx">15</td><td class="name">易方达全球成长精选混合A</td><td class="code">012920</td><td class="amt">698.93</td></tr>
+        <tr><td class="idx">16</td><td class="name">天弘纳斯达克100指数C</td><td class="code">018044</td><td class="amt">359.60</td></tr>
+        <tr><td class="idx">17</td><td class="name">国泰中证钢铁ETF联接C</td><td class="code">008190</td><td class="amt">108.77</td></tr>
+        <tr><td class="idx">18</td><td class="name">广发港股创新药ETF联接A</td><td class="code">019670</td><td class="amt">84.41</td></tr>
+        <tr><td class="idx">19</td><td class="name">天弘永定价值成长混合A</td><td class="code">420003</td><td class="amt">17.75</td></tr>
+        <tr><td class="idx">20</td><td class="name">易方达纳斯达克100ETF联接A</td><td class="code">161130</td><td class="amt">11.53</td></tr>
+        <tr><td class="idx">21</td><td class="name">西部利得国企红利指数增强A</td><td class="code">501059</td><td class="amt">10.61</td></tr>
+        <tr><td class="idx">22</td><td class="name">华泰柏瑞红利低波ETF联接C</td><td class="code">007467</td><td class="amt">9.55</td></tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">合计</td>
+          <td class="amt">25,320.09</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>说明：</strong>「持仓金额」来自本地持仓记录；若与代销 APP 不一致，请以平台为准。本页由脚本从数据库生成，仅为展示辅助，不构成投资建议。
+  </div>
+
+  <footer>
+    FundPilot · 基金浮动定投助手 · 工具仅供参考
+  </footer>
+</div>
+</body>
+</html>
