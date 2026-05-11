@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>链接测试 · 页面 A</title>
+  <style>
+    :root { --bg: #0f1419; --card: #1a2332; --text: #e7ecf3; --muted: #8b9cb3; --accent: #22d3ee; --link: #60a5fa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 28px 20px 48px; }
+    .wrap { max-width: 640px; margin: 0 auto; }
+    h1 { font-size: 1.35rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 24px; }
+    .card { background: var(--card); border-radius: 12px; padding: 20px 22px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,.06); }
+    .card h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+    ul { margin: 0; padding-left: 1.15rem; }
+    li { margin: 8px 0; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .pill { display: inline-block; background: rgba(34,211,238,.12); color: var(--accent); padding: 4px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
+    section { scroll-margin-top: 20px; padding: 48px 0; border-top: 1px solid rgba(255,255,255,.08); }
+    section h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    footer { margin-top: 32px; font-size: 0.75rem; color: var(--muted); }
+    code { font-size: 0.85em; background: rgba(0,0,0,.35); padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="pill">页面 A</span>
+    <h1>htmlpreview 链接跳转测试</h1>
+    <p class="sub">用于观察相对路径、锚点、外链在预览壳中的行为。</p>
+
+    <div class="card">
+      <h2>站内相对链接</h2>
+      <ul>
+        <li><a href="preview-test-b.html">跳到页面 B（同目录相对路径）</a></li>
+        <li><a href="positions-dashboard.html">打开持仓一览（同目录）</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>页内锚点</h2>
+      <ul>
+        <li><a href="#sec1">跳到本节一</a></li>
+        <li><a href="#sec2">跳到本节二</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>外链</h2>
+      <ul>
+        <li><a href="https://example.com" target="_blank" rel="noopener noreferrer">example.com（新标签）</a></li>
+      </ul>
+    </div>
+
+    <section id="sec1">
+      <h3>本节一</h3>
+      <p>锚点 <code>#sec1</code> 的目标区域。若锚点无效，多半是预览壳对 fragment 的处理问题。</p>
+    </section>
+    <section id="sec2">
+      <h3>本节二</h3>
+      <p>锚点 <code>#sec2</code> 的目标区域。</p>
+    </section>
+
+    <footer>
+      使用 htmlpreview 时，请把 raw 地址指向本文件所在分支的 <code>preview-test-a.html</code>；页面 B 文件名为 <code>preview-test-b.html</code>。
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>持仓一览 · FundPilot</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --text: #1a1d26;
+      --muted: #6b7280;
+      --border: #e8ecf1;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 48px; }
+    header { margin-bottom: 28px; }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+    .card .value { font-size: 1.35rem; font-weight: 700; margin-top: 6px; letter-spacing: -0.02em; }
+    .card.accent { background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%); color: #fff; border: none; }
+    .card.accent .label { color: rgba(255,255,255,0.75); }
+    .panel {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead { background: var(--accent-soft); }
+    th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-weight: 600; color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    tbody tr:hover { background: #fafbfc; }
+    tbody tr:last-child td { border-bottom: none; }
+    .mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+    .name .n { display: block; font-weight: 500; color: var(--text); }
+    .badge {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      background: #f3f4f6;
+      color: var(--muted);
+    }
+    .t-index { background: #ecfdf5; color: #047857; }
+    .t-qdii { background: #fef3c7; color: #b45309; }
+    .t-mixed { background: #ede9fe; color: #6d28d9; }
+    .t-stock { background: #fee2e2; color: #b91c1c; }
+    .num { text-align: right; white-space: nowrap; }
+    .strong { font-weight: 600; color: var(--text); }
+    .muted { color: var(--muted); font-size: 0.8rem; }
+    footer {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    @media (max-width: 720px) {
+      .hide-sm { display: none; }
+      th, td { padding: 10px 12px; }
+      table { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>持仓一览</h1>
+      <p>数据快照：2026-05-11（来源：FundPilot 本地库）</p>
+    </header>
+    <div class="cards">
+      <div class="card accent">
+        <div class="label">持仓成本合计</div>
+        <div class="value">60,864.91 <span style="font-size:0.85rem;font-weight:500;opacity:.9">元</span></div>
+      </div>
+      <div class="card">
+        <div class="label">持仓只数</div>
+        <div class="value">22</div>
+      </div>
+      <div class="card">
+        <div class="label">说明</div>
+        <div class="value" style="font-size:0.95rem;font-weight:500">份额 × 记录成本</div>
+      </div>
+    </div>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>代码</th>
+            <th>名称</th>
+            <th class="num">份额</th>
+            <th class="num">成本净值</th>
+            <th class="num">持仓成本</th>
+            <th class="num hide-sm">占比</th>
+          </tr>
+        </thead>
+        <tbody>
+    <tr>
+      <td class="mono">025209</td>
+      <td class="name"><span class="n">永赢先锋半导体智选混合C</span><span class="badge t-mixed">混合</span></td>
+      <td class="num">5,000.00</td>
+      <td class="num mono">2.2786</td>
+      <td class="num strong">11,393.00</td>
+      <td class="num muted">18.7%</td>
+    </tr>
+    <tr>
+      <td class="mono">025500</td>
+      <td class="name"><span class="n">东方阿尔法科技智选混合C</span><span class="badge t-mixed">混合</span></td>
+      <td class="num">5,000.00</td>
+      <td class="num mono">1.7532</td>
+      <td class="num strong">8,766.00</td>
+      <td class="num muted">14.4%</td>
+    </tr>
+    <tr>
+      <td class="mono">006479</td>
+      <td class="name"><span class="n">广发纳斯达克100ETF联接C</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">884.58</td>
+      <td class="num mono">8.0961</td>
+      <td class="num strong">7,161.65</td>
+      <td class="num muted">11.8%</td>
+    </tr>
+    <tr>
+      <td class="mono">022500</td>
+      <td class="name"><span class="n">国泰全指通信设备ETF联接E</span><span class="badge t-index">指数</span></td>
+      <td class="num">1,553.84</td>
+      <td class="num mono">4.1058</td>
+      <td class="num strong">6,379.76</td>
+      <td class="num muted">10.5%</td>
+    </tr>
+    <tr>
+      <td class="mono">016874</td>
+      <td class="name"><span class="n">广发远见智选混合C</span><span class="badge t-mixed">混合</span></td>
+      <td class="num">2,000.00</td>
+      <td class="num mono">2.1018</td>
+      <td class="num strong">4,203.60</td>
+      <td class="num muted">6.9%</td>
+    </tr>
+    <tr>
+      <td class="mono">022726</td>
+      <td class="name"><span class="n">博时科创板芯片ETF联接C</span><span class="badge t-index">指数</span></td>
+      <td class="num">1,283.50</td>
+      <td class="num mono">2.2254</td>
+      <td class="num strong">2,856.30</td>
+      <td class="num muted">4.7%</td>
+    </tr>
+    <tr>
+      <td class="mono">012920</td>
+      <td class="name"><span class="n">易方达全球成长精选混合A</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">698.93</td>
+      <td class="num mono">3.9437</td>
+      <td class="num strong">2,756.37</td>
+      <td class="num muted">4.5%</td>
+    </tr>
+    <tr>
+      <td class="mono">012922</td>
+      <td class="name"><span class="n">易方达全球成长精选混合C</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">711.53</td>
+      <td class="num mono">3.8708</td>
+      <td class="num strong">2,754.19</td>
+      <td class="num muted">4.5%</td>
+    </tr>
+    <tr>
+      <td class="mono">016823</td>
+      <td class="name"><span class="n">天弘全球新能源汽车C</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">1,058.59</td>
+      <td class="num mono">2.1402</td>
+      <td class="num strong">2,265.59</td>
+      <td class="num muted">3.7%</td>
+    </tr>
+    <tr>
+      <td class="mono">018419</td>
+      <td class="name"><span class="n">广发碳中和主题混合C</span><span class="badge t-mixed">混合</span></td>
+      <td class="num">1,118.67</td>
+      <td class="num mono">1.9671</td>
+      <td class="num strong">2,200.54</td>
+      <td class="num muted">3.6%</td>
+    </tr>
+    <tr>
+      <td class="mono">004433</td>
+      <td class="name"><span class="n">南方有色金属ETF联接C</span><span class="badge t-index">指数</span></td>
+      <td class="num">1,046.18</td>
+      <td class="num mono">2.0912</td>
+      <td class="num strong">2,187.77</td>
+      <td class="num muted">3.6%</td>
+    </tr>
+    <tr>
+      <td class="mono">016057</td>
+      <td class="name"><span class="n">博时纳斯达克100ETF联接C</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">942.28</td>
+      <td class="num mono">2.0899</td>
+      <td class="num strong">1,969.27</td>
+      <td class="num muted">3.2%</td>
+    </tr>
+    <tr>
+      <td class="mono">025687</td>
+      <td class="name"><span class="n">国泰半导体制造精选混合C</span><span class="badge t-mixed">混合</span></td>
+      <td class="num">1,351.84</td>
+      <td class="num mono">1.4107</td>
+      <td class="num strong">1,907.04</td>
+      <td class="num muted">3.1%</td>
+    </tr>
+    <tr>
+      <td class="mono">019173</td>
+      <td class="name"><span class="n">摩根纳斯达克100指数C</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">1,058.22</td>
+      <td class="num mono">1.7380</td>
+      <td class="num strong">1,839.19</td>
+      <td class="num muted">3.0%</td>
+    </tr>
+    <tr>
+      <td class="mono">012538</td>
+      <td class="name"><span class="n">华宝细分化工ETF联接C</span><span class="badge t-index">指数</span></td>
+      <td class="num">1,009.71</td>
+      <td class="num mono">0.8963</td>
+      <td class="num strong">905.00</td>
+      <td class="num muted">1.5%</td>
+    </tr>
+    <tr>
+      <td class="mono">018044</td>
+      <td class="name"><span class="n">天弘纳斯达克100指数C</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">359.60</td>
+      <td class="num mono">2.0221</td>
+      <td class="num strong">727.15</td>
+      <td class="num muted">1.2%</td>
+    </tr>
+    <tr>
+      <td class="mono">019670</td>
+      <td class="name"><span class="n">广发港股创新药ETF联接A</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">84.41</td>
+      <td class="num mono">3.3800</td>
+      <td class="num strong">285.31</td>
+      <td class="num muted">0.5%</td>
+    </tr>
+    <tr>
+      <td class="mono">008190</td>
+      <td class="name"><span class="n">国泰中证钢铁ETF联接C</span><span class="badge t-index">指数</span></td>
+      <td class="num">108.77</td>
+      <td class="num mono">1.4300</td>
+      <td class="num strong">155.54</td>
+      <td class="num muted">0.3%</td>
+    </tr>
+    <tr>
+      <td class="mono">420003</td>
+      <td class="name"><span class="n">天弘永定价值成长混合A</span><span class="badge t-mixed">混合</span></td>
+      <td class="num">17.75</td>
+      <td class="num mono">3.4376</td>
+      <td class="num strong">61.02</td>
+      <td class="num muted">0.1%</td>
+    </tr>
+    <tr>
+      <td class="mono">161130</td>
+      <td class="name"><span class="n">易方达纳斯达克100ETF联接A</span><span class="badge t-qdii">QDII</span></td>
+      <td class="num">11.53</td>
+      <td class="num mono">4.4401</td>
+      <td class="num strong">51.19</td>
+      <td class="num muted">0.1%</td>
+    </tr>
+    <tr>
+      <td class="mono">501059</td>
+      <td class="name"><span class="n">西部利得国企红利指数增强A</span><span class="badge t-index">指数</span></td>
+      <td class="num">10.61</td>
+      <td class="num mono">2.2766</td>
+      <td class="num strong">24.15</td>
+      <td class="num muted">0.0%</td>
+    </tr>
+    <tr>
+      <td class="mono">007467</td>
+      <td class="name"><span class="n">华泰柏瑞红利低波ETF联接C</span><span class="badge t-index">指数</span></td>
+      <td class="num">9.55</td>
+      <td class="num mono">1.6004</td>
+      <td class="num strong">15.28</td>
+      <td class="num muted">0.0%</td>
+    </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer>
+      本页面为静态数据展示，不构成投资建议。更新数据后可在仓库根目录执行：<code style="background:#e5e7eb;padding:2px 6px;border-radius:4px">node .agents/skills/fundpilot/dist/index.js position list --json</code> 与 <code style="background:#e5e7eb;padding:2px 6px;border-radius:4px">fund list --json</code>，再按需刷新本页中的表格内容。
+    </footer>
+  </div>
+</body>
+</html>
