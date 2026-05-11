@@ -1,0 +1,33 @@
+{
+  "name": "fundpilot",
+  "version": "1.0.0",
+  "description": "基金浮动定投助手 CLI - 给 AI Agent 使用",
+  "main": "dist/index.js",
+  "bin": {
+    "fundpilot": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "fund",
+    "investment",
+    "cli",
+    "agent"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "sql.js": "^1.12.0",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/sql.js": "^1.4.9",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  },
+  "openclaw": {
+    "extensions": ["./dist/index.js"]
+  }
+}

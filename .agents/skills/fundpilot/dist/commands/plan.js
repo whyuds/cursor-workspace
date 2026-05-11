@@ -1,0 +1,50 @@
+"use strict";
+// 定投计划命令
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.handlePlanSet = handlePlanSet;
+exports.handlePlanList = handlePlanList;
+const db_1 = require("../db");
+async function handlePlanSet(args) {
+    try {
+        if (!args.code) {
+            return { success: false, error: 'MISSING_CODE', message: '缺少基金代码 --code' };
+        }
+        if (args.amount === undefined || isNaN(args.amount)) {
+            return { success: false, error: 'MISSING_AMOUNT', message: '缺少定投金额 --amount' };
+        }
+        const validFrequencies = ['daily', 'weekly', 'biweekly', 'monthly'];
+        const frequency = args.frequency || 'weekly';
+        if (!validFrequencies.includes(frequency)) {
+            return {
+                success: false,
+                error: 'INVALID_FREQUENCY',
+                message: `无效的定投频率 ${frequency}，有效值: ${validFrequencies.join(', ')}`
+            };
+        }
+        // 检查基金是否存在
+        const fund = await (0, db_1.getFund)(args.code);
+        if (!fund) {
+            return { success: false, error: 'FUND_NOT_FOUND', message: `基金 ${args.code} 不存在，请先添加` };
+        }
+        const plan = await (0, db_1.setPlan)({
+            code: args.code,
+            amount: args.amount,
+            frequency: frequency,
+            enabled: args.enabled !== false,
+        });
+        return { success: true, data: plan, message: '定投计划设置成功' };
+    }
+    catch (err) {
+        return { success: false, error: 'ERROR', message: err.message };
+    }
+}
+async function handlePlanList() {
+    try {
+        const plans = await (0, db_1.listPlans)();
+        return { success: true, data: plans, message: `共 ${plans.length} 条定投计划` };
+    }
+    catch (err) {
+        return { success: false, error: 'ERROR', message: err.message };
+    }
+}
+//# sourceMappingURL=plan.js.map
