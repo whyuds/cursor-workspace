@@ -1,11 +1,11 @@
 import initSqlJs, { Database as SqlJsDatabase, SqlValue } from 'sql.js';
 import path from 'path';
-import os from 'os';
 import fs from 'fs';
 import type { Fund, Position, Plan, Strategy, Operation } from './types';
 
-// 数据库文件路径
-const DB_DIR = path.join(os.homedir(), '.fundpilot');
+// 数据库保存在本 skill 目录下（与 package.json 同级），便于与工作区一并迁移
+const SKILL_ROOT = path.resolve(__dirname, '..');
+const DB_DIR = path.join(SKILL_ROOT, '.fundpilot');
 const DB_PATH = path.join(DB_DIR, 'fundpilot.db');
 
 // 确保目录存在

@@ -5,6 +5,7 @@ node_modules/
 dist/*.js.map
 
 # Database (user data, not to be synced)
+.fundpilot/
 *.db
 *.db-journal
 
