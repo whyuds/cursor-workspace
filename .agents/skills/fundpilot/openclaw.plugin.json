@@ -1,0 +1,12 @@
+{
+  "id": "fundpilot",
+  "name": "FundPilot",
+  "description": "基金浮动定投助手 - 管理基金自选、持仓、定投计划、浮动策略、今日信号计算、操作记录、周/月复盘报告。",
+  "version": "1.0.0",
+  "skills": ["./"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {}
+  }
+}

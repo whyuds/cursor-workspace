@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>{{TITLE}}</title>
+<style>
+/* ========== 桌面端优化样式 ========== */
+
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", -apple-system, sans-serif;
+  padding: 60px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-width: 1100px;
+}
+
+.container {
+  background: white;
+  padding: 50px 60px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* ========== 标题样式 ========== */
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  border-bottom: 4px solid #667eea;
+  padding-bottom: 25px;
+  margin-bottom: 40px;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-top: 45px;
+  margin-bottom: 20px;
+  border-left: 5px solid #667eea;
+  padding-left: 15px;
+  font-size: 26px;
+}
+
+h3 {
+  color: #34495e;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+/* ========== 表格样式 ========== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+td {
+  border: 1px solid #e0e0e0;
+  padding: 12px 20px;
+  line-height: 1.6;
+}
+
+tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+tr:hover {
+  background: #e8f4f8;
+}
+
+/* ========== 颜色样式 ========== */
+
+.red {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.green {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.blue {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.purple {
+  color: #9b59b6;
+  font-weight: 600;
+}
+
+.orange {
+  color: #e67e22;
+  font-weight: 600;
+}
+
+/* ========== 提示框样式 ========== */
+
+.highlight {
+  background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+  padding: 25px 30px;
+  border-radius: 12px;
+  border-left: 5px solid #ffc107;
+  margin: 30px 0;
+  font-size: 16px;
+}
+
+.warning {
+  background: linear-gradient(135deg, #ffe6e6 0%, #f8d7da 100%);
+  padding: 25px 30px;
+  border-radius: 12px;
+  border-left: 5px solid #e74c3c;
+  margin: 30px 0;
+  font-size: 16px;
+}
+
+.success {
+  background: linear-gradient(135deg, #e6f9e6 0%, #d4edda 100%);
+  padding: 25px 30px;
+  border-radius: 12px;
+  border-left: 5px solid #27ae60;
+  margin: 30px 0;
+  font-size: 16px;
+}
+
+.info {
+  background: linear-gradient(135deg, #e6f3ff 0%, #cce5ff 100%);
+  padding: 25px 30px;
+  border-radius: 12px;
+  border-left: 5px solid #3498db;
+  margin: 30px 0;
+  font-size: 16px;
+}
+
+/* ========== 标签样式 ========== */
+
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 10px;
+  color: white;
+}
+
+.badge-qdii { background: #9b59b6; }
+.badge-index { background: #3498db; }
+.badge-mixed { background: #e67e22; }
+.badge-stock { background: #e74c3c; }
+.badge-bond { background: #27ae60; }
+.badge-money { background: #95a5a6; }
+
+/* ========== 统计框样式 ========== */
+
+.stat-box {
+  display: inline-block;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 30px 40px;
+  border-radius: 15px;
+  margin: 15px 8px;
+  text-align: center;
+  min-width: 220px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.stat-value {
+  font-size: 36px;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin-top: 10px;
+}
+
+/* ========== 列表样式 ========== */
+
+ul {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+li {
+  margin: 12px 0;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* ========== 底部样式 ========== */
+
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #7f8c8d;
+  font-size: 16px;
+  border-top: 2px solid #e0e0e0;
+  padding-top: 30px;
+}
+
+/* ========== 特殊组件 ========== */
+
+.summary-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 15px;
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.summary-card h3 {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.summary-card ul {
+  color: white;
+}
+
+.signature {
+  background: #f8f9fa;
+  padding: 25px 30px;
+  border-radius: 12px;
+  margin-top: 30px;
+  font-size: 15px;
+  color: #7f8c8d;
+}
+
+/* ========== 动画效果 ========== */
+
+.container {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ========== 报告标题 ========== -->
+<h1>📊 {{REPORT_TITLE}}</h1>
+<p style="text-align: center; color: #7f8c8d; font-size: 16px; margin-bottom: 30px;">
+{{REPORT_META}}
+</p>
+
+<!-- ========== 统计概览 ========== -->
+{{STAT_OVERVIEW}}
+
+<!-- ========== 正文内容 ========== -->
+{{CONTENT}}
+
+<!-- ========== 签名声明 ========== -->
+<div class="signature">
+<strong>📌 分析师声明：</strong><br>
+{{DECLARATION}}
+</div>
+
+<!-- ========== 页脚 ========== -->
+<div class="footer">
+<p>{{FOOTER_LINE1}}</p>
+<p>{{FOOTER_LINE2}}</p>
+<p style="margin-top: 15px; font-size: 14px; color: #95a5a6;">
+{{FOOTER_DISCLAIMER}}
+</p>
+</div>
+
+</div>
+
+</body>
+</html>
