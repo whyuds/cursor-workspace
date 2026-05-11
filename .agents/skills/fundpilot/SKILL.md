@@ -99,7 +99,8 @@ fundpilot fund remove --code=000001 --json
 ### 持仓管理
 
 ```bash
-# 更新持仓
+# 更新持仓（--cost 可选：省略时已有持仓保留原成本，新建持仓用当日净值/估值）
+fundpilot position upsert --code=000001 --shares=1000 --json
 fundpilot position upsert --code=000001 --shares=1000 --cost=1.5 --json
 
 # 列出所有持仓
