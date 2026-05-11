@@ -11,7 +11,11 @@ async function handleSignalToday(args) {
         }
         const signal = await (0, strategy_1.calculateTodaySignal)(args.code, args.strategy || 'default');
         if (!signal) {
-            return { success: false, error: 'CALCULATION_FAILED', message: '信号计算失败，请检查基金是否存在且有定投计划' };
+            return {
+                success: false,
+                error: 'CALCULATION_FAILED',
+                message: '信号计算失败，请检查基金是否存在、策略是否配置、以及行情接口是否可正常拉取',
+            };
         }
         return { success: true, data: signal, message: '信号计算完成' };
     }

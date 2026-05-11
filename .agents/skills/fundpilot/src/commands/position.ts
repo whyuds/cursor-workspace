@@ -36,7 +36,7 @@ export async function handlePositionUpsert(args: {
           return {
             success: false,
             error: 'MISSING_COST',
-            message: '新持仓未指定 --cost，且未能拉取净值，请手动指定成本单价',
+            message: '新持仓未指定 --cost，且未能从天天基金拉取有效净值/估值，请手动指定成本单价',
           };
         }
       }

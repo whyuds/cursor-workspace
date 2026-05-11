@@ -99,7 +99,7 @@ fundpilot fund remove --code=000001 --json
 ### 持仓管理
 
 ```bash
-# 更新持仓（--cost 可选：省略时已有持仓保留原成本，新建持仓用当日净值/估值）
+# 更新持仓（--cost 可选：省略时已有持仓保留原成本，新建持仓须能拉取天天基金净值/估值，否则请显式传入 --cost）
 fundpilot position upsert --code=000001 --shares=1000 --json
 fundpilot position upsert --code=000001 --shares=1000 --cost=1.5 --json
 
@@ -156,7 +156,7 @@ fundpilot signal today-all --json
 - `action: "hold"` - 观望，按原计划执行
 - `action: "pause"` - 建议暂停买入
 
-⚠️ **注意**: 当前使用 Mock 行情数据，信号仅供参考
+⚠️ **注意**: 信号依赖天天基金行情接口，若接口不可用则无法计算
 
 ### 操作记录
 
@@ -349,7 +349,7 @@ write('~/.openclaw/media/qqbot/downloads/报告名称.html', html);
 
 ## 注意事项
 
-1. **行情数据**: 当前使用 Mock 数据，实际使用需接入真实 API
+1. **行情数据**: 仅使用天天基金接口拉取；失败时相关命令会报错，不会使用模拟数据
 2. **无真实交易**: 本工具不执行任何真实交易，只做记录和计算
 3. **风险提示**: 基金投资有风险，历史数据不代表未来收益
 4. **策略验证**: 在使用策略前，建议回测验证效果
