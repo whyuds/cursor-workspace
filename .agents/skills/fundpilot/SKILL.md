@@ -208,6 +208,7 @@ fundpilot report monthly --json
 | 历史索引页 | `.agents/skills/fundpilot/index.html` |
 | 历史报告目录 | `.agents/skills/fundpilot/analysis-history/` |
 | 日度分析模板 | `.agents/skills/fundpilot/templates/daily-position-analysis-template.html` |
+| Automation 推荐 Prompt | `.agents/skills/fundpilot/automations/daily-position-analysis-prompt.md` |
 
 #### 每次调度流程
 
@@ -233,6 +234,10 @@ fundpilot report monthly --json
 9. 下次观察点
 
 建议应基于持仓、行情、策略信号、操作记录和已标注来源的资讯；不得编造净值、资讯或确定性收益结论。
+
+#### Automations Prompt
+
+创建 Cursor Automations 时，推荐直接复制 `.agents/skills/fundpilot/automations/daily-position-analysis-prompt.md` 中的 Prompt。该版本已通过 Composer 2 Fast 子 Agent 模拟，重点补充了 `signal today-all` 失败后的逐基 `signal today --code=<code>` 兜底流程，避免单只基金行情失败导致整份报告缺少信号。
 
 ### HTML 报告生成（推荐）
 

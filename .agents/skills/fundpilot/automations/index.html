@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FundPilot Automation 推荐 Prompt</title>
+<style>
+body {
+  margin: 0;
+  padding: 18px 14px 36px;
+  color: #24292f;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d0d7de;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d8dee4;
+  font-size: 21px;
+}
+
+code,
+pre {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+}
+
+code {
+  padding: 2px 6px;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  white-space: pre-wrap;
+}
+
+.note {
+  border-left: 4px solid #0969da;
+  background: #ddf4ff;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>FundPilot Automation 推荐 Prompt</h1>
+  <div class="badges">
+    <span class="badge">推荐模型：Composer 2</span>
+    <span class="badge">模拟模型：composer-2-fast</span>
+    <span class="badge">最终版本：v4.1</span>
+    <span class="badge">关键策略：today-all 失败逐基兜底</span>
+  </div>
+  <p class="note">推荐在 Cursor Automations 中使用 Composer 2 系列模型。当前模拟使用 <code>composer-2-fast</code>，最终版本为 <code>v4.1</code>，核心优化是 <code>today-all 失败逐基兜底</code>。</p>
+
+  <h2>为什么使用 v4.1</h2>
+  <ul>
+    <li>强制所有 CLI 命令使用 <code>--json</code>。</li>
+    <li><code>signal today-all</code> 失败时，自动对全部持仓逐基执行 <code>signal today --code</code>。</li>
+    <li>报告披露以全量逐基扫描结果为准，不依赖批量报错中的不完整代码列表。</li>
+    <li>生成 HTML 报告后更新 <code>index.html</code> 历史链接，并保留自动化标记。</li>
+  </ul>
+
+  <h2>复制源文件</h2>
+  <p>完整 Prompt 源文件位于：<code>automations/daily-position-analysis-prompt.md</code>。如果浏览器直接打开 Markdown 出现编码问题，请在代码编辑器中复制该文件内容。</p>
+
+  <h2>核心 Prompt 摘要</h2>
+  <pre>你是 FundPilot 日度持仓分析 Automation，运行在 Cursor Automations 中。每次触发后只做一件事：生成一份可回看的日度持仓分析 HTML，并更新历史索引。
+
+硬性规则：
+- 先读取 /workspace/.agents/skills/fundpilot/SKILL.md。
+- 所有 FundPilot CLI 命令都从 /workspace 执行，且必须带 --json。
+- 不编造净值、涨跌幅、策略信号、资讯标题或 URL。
+- 不使用保证性投资表述。
+
+关键兜底：
+- 先运行 signal today-all --json。
+- 若 today-all 失败，对 position list 中每个持仓代码逐条运行 signal today --code=&lt;code&gt; --json。
+- 报告披露必须以全量逐基扫描结果为准；today-all 错误信息中的基金代码只作为辅助线索。
+
+输出：
+- 使用 templates/daily-position-analysis-template.html 生成报告。
+- 保存到 analysis-history/YYYY-MM-DD-daily-position-analysis.html。
+- 更新 index.html 历史链接，最新报告放最前。
+- 自检无 {{...}} 残留占位符，并列出本次预期文件变更。</pre>
+
+  <h2>模拟迭代结论</h2>
+  <ul>
+    <li>v1：太笼统，缺少失败路径和索引细节。</li>
+    <li>v2：能跑基础 CLI，但 <code>today-all</code> 单点失败会导致整批无信号。</li>
+    <li>v3：补充 success 扫描和自检，但逐基兜底不够明确。</li>
+    <li>v4：逐基兜底有效，发现批量失败列表和逐基结果可能不一致。</li>
+    <li>v4.1：最终推荐，以全量逐基扫描结果作为报告依据。</li>
+  </ul>
+
+  <p><a href="../index.html">返回 FundPilot 日度持仓分析索引</a></p>
+</main>
+</body>
+</html>

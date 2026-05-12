@@ -66,6 +66,8 @@ fundpilot operation add --code=000001 --type=buy --amount=500 --price=1.5 --json
 
 固定分析结构包括：一句话结论、数据来源与缺口、持仓概览、单只基金诊断、行情与风格观察、相关资讯摘要、操作建议与资金纪律、风险提示和下次观察点。
 
+创建 Cursor Automations 时，推荐直接复制 [daily-position-analysis-prompt.md](./automations/daily-position-analysis-prompt.md)。该 Prompt 已模拟验证 `signal today-all` 失败后的逐基信号兜底流程。
+
 ## 输出格式
 
 所有命令输出 JSON 格式：
