@@ -19,6 +19,7 @@
 - 📈 **信号计算** - 根据策略计算今日操作建议
 - 📝 **操作记录** - 记录买卖分红操作
 - 📋 **报告生成** - 周/月度投资报告
+- 🗂️ **日度分析归档** - 周期性 Agent 可按模板生成持仓分析并维护历史索引
 
 ## 安装
 
@@ -58,6 +59,12 @@ fundpilot operation add --code=000001 --type=buy --amount=500 --price=1.5 --json
 ## 命令文档
 
 详细命令说明请参考 [SKILL.md](./SKILL.md)
+
+## 周期性日度持仓分析
+
+面向天级调度 Agent 的静态入口位于 [index.html](./index.html)。Agent 每次完成持仓分析后，应使用 [daily-position-analysis-template.html](./templates/daily-position-analysis-template.html) 生成报告，保存到 [analysis-history/](./analysis-history/)，并把最新报告链接追加到 `index.html` 的历史列表顶部。
+
+固定分析结构包括：一句话结论、数据来源与缺口、持仓概览、单只基金诊断、行情与风格观察、相关资讯摘要、操作建议与资金纪律、风险提示和下次观察点。
 
 ## 输出格式
 

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FundPilot 日度持仓分析索引</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f6f8fa;
+  --card: #ffffff;
+  --text: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --accent: #0969da;
+  --accent-soft: #ddf4ff;
+  --warn: #9a6700;
+  --warn-soft: #fff8c5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: 1.65;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 18px 48px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0969da 0%, #8250df 100%);
+  color: #fff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 16px 40px rgba(27, 31, 36, 0.12);
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+}
+
+.hero p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.notice {
+  background: var(--warn-soft);
+  border-left: 4px solid var(--warn);
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+
+.report-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.report-list li {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+
+.report-list li:first-child {
+  border-top: 0;
+}
+
+.report-list a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.report-list a:hover {
+  text-decoration: underline;
+}
+
+code {
+  background: #f6f8fa;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+footer {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <span class="badge">Agent workspace</span>
+    <h1>FundPilot 日度持仓分析索引</h1>
+    <p>周期性 Agent 每次完成持仓分析后，将报告写入 <code>analysis-history/</code>，并在本页追加历史链接。</p>
+  </section>
+
+  <section class="grid">
+    <article class="card">
+      <h2>生成约定</h2>
+      <ol>
+        <li>读取 <code>templates/daily-position-analysis-template.html</code>。</li>
+        <li>结合持仓、行情、策略信号、操作记录和可检索资讯生成简洁报告。</li>
+        <li>保存为 <code>analysis-history/YYYY-MM-DD-daily-position-analysis.html</code>。</li>
+        <li>在“历史分析”列表顶部追加该报告链接。</li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <h2>分析边界</h2>
+      <p class="notice">报告只能作为投资分析辅助，不提供保证性结论；若行情接口或资讯检索不可用，必须在报告中说明缺口，不得编造数据。</p>
+    </article>
+  </section>
+
+  <section class="card">
+    <h2>历史分析</h2>
+    <p class="muted">最新报告放在最前面。Agent 更新时请保留开始/结束标记，便于自动化追加链接。</p>
+    <ul class="report-list">
+      <!-- FUNDPILOT_ANALYSIS_LINKS_START -->
+      <li class="muted">暂无历史分析。首次周期任务完成后，将在这里追加报告链接。</li>
+      <!-- FUNDPILOT_ANALYSIS_LINKS_END -->
+    </ul>
+  </section>
+
+  <section class="grid">
+    <article class="card">
+      <h3>模板与规范</h3>
+      <ul>
+        <li><a href="templates/daily-position-analysis-template.html">日度持仓分析模板</a></li>
+        <li><a href="analysis-history/index.html">历史目录命名与更新规则</a></li>
+        <li><a href="SKILL.md">Agent 使用指南</a></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>建议覆盖角度</h3>
+      <p>持仓结构、单基盈亏、当日信号、市场风格、相关资讯、资金纪律、风险提示和下一次观察点。</p>
+    </article>
+  </section>
+
+  <footer>
+    FundPilot 仅记录和分析基金数据，不执行真实交易。投资有风险，用户需自行决策。
+  </footer>
+</main>
+</body>
+</html>
