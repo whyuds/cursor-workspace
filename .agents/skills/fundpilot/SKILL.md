@@ -32,12 +32,14 @@ FundPilot 是一个基金浮动定投助手 CLI 工具，帮助 AI Agent 管理�
 - 查看今日投资信号
 - 记录买卖操作
 - 查看周/月度报告
+- 执行周期性日度持仓分析并沉淀历史报告
 
 ### 必须遵守
 
 1. **所有命令必须加 `--json` 参数** - 本 CLI 只输出 JSON 格式
 2. **不要输出保证性表述** - 禁止使用"必买"、"稳赚"、"强烈推荐"等词汇
 3. **客观呈现数据** - 只展示计算结果，不替用户做决策
+4. **日度分析保持模板一致** - 周期任务生成的持仓分析必须使用 `templates/daily-position-analysis-template.html`
 
 ### 调用方式
 
@@ -194,6 +196,43 @@ fundpilot report weekly --json
 # 月报告
 fundpilot report monthly --json
 ```
+
+### 周期性日度持仓分析（Agent 专用）
+
+当用户配置天级调度任务后，Agent 每次应生成一份简洁的持仓分析 HTML，并把历史链接维护到 skill 根目录的 `index.html`。
+
+#### 固定路径
+
+| 用途 | 路径 |
+|------|------|
+| 历史索引页 | `.agents/skills/fundpilot/index.html` |
+| 历史报告目录 | `.agents/skills/fundpilot/analysis-history/` |
+| 日度分析模板 | `.agents/skills/fundpilot/templates/daily-position-analysis-template.html` |
+
+#### 每次调度流程
+
+1. **读取本地数据**：依次调用 `position list --json`、`plan list --json`、`strategy list --json`、`operation list --json`。
+2. **计算行情信号**：优先调用 `signal today-all --json`；若天天基金接口失败，按上文 Fallback 检索补数，并在报告中披露数据来源与缺口。
+3. **检索相关资讯**：根据持仓主题、基金名称、用户偏好检索当天或最新资讯；Agent 没有搜索工具时，在报告中写明“本次未检索外部资讯”。
+4. **按模板生成报告**：读取 `templates/daily-position-analysis-template.html`，替换占位符，内容保持简洁。
+5. **保存历史文件**：写入 `analysis-history/YYYY-MM-DD-daily-position-analysis.html`；同一天多次生成时追加 `-2`、`-3`。
+6. **更新历史索引**：在 `index.html` 的 `FUNDPILOT_ANALYSIS_LINKS_START` 和 `FUNDPILOT_ANALYSIS_LINKS_END` 标记之间，把最新报告链接插到最前。
+
+#### 分析角度要求
+
+每次报告必须按固定顺序覆盖：
+
+1. 一句话结论
+2. 数据来源与缺口
+3. 持仓概览
+4. 单只基金诊断
+5. 行情与风格观察
+6. 相关资讯摘要
+7. 操作建议与资金纪律
+8. 风险提示
+9. 下次观察点
+
+建议应基于持仓、行情、策略信号、操作记录和已标注来源的资讯；不得编造净值、资讯或确定性收益结论。
 
 ### HTML 报告生成（推荐）
 

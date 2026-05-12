@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FundPilot 历史分析目录规则</title>
+<style>
+body {
+  margin: 0;
+  padding: 18px 14px 36px;
+  color: #24292f;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d0d7de;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d8dee4;
+  font-size: 21px;
+}
+
+code {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.note {
+  border-left: 4px solid #0969da;
+  background: #ddf4ff;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>FundPilot 日度持仓分析历史目录</h1>
+  <p class="note">本目录用于存放周期性 Agent 生成的日度持仓分析报告。报告应长期保留，便于用户回看每次分析时的持仓、行情、资讯和建议依据。</p>
+
+  <h2>文件命名</h2>
+  <ul>
+    <li>标准命名：<code>YYYY-MM-DD-daily-position-analysis.html</code></li>
+    <li>同一天多次生成：<code>YYYY-MM-DD-daily-position-analysis-2.html</code></li>
+    <li>文件必须使用 UTF-8 编码。</li>
+  </ul>
+
+  <h2>生成步骤</h2>
+  <ol>
+    <li>读取 <code>../templates/daily-position-analysis-template.html</code>。</li>
+    <li>调用 FundPilot CLI 获取持仓、计划、策略、操作记录和今日信号。</li>
+    <li>如 Agent 具备搜索工具，按用户持仓和偏好检索当天或最新相关资讯，并写入来源链接；无搜索工具时写明“本次未检索外部资讯”。</li>
+    <li>将报告保存到本目录。</li>
+    <li>更新 <code>../index.html</code> 的历史分析列表，把最新报告链接放在最前。</li>
+  </ol>
+
+  <h2>固定分析结构</h2>
+  <ol>
+    <li>一句话结论</li>
+    <li>数据来源与缺口</li>
+    <li>持仓概览</li>
+    <li>单只基金诊断</li>
+    <li>行情与风格观察</li>
+    <li>相关资讯摘要</li>
+    <li>操作建议与资金纪律</li>
+    <li>风险提示</li>
+    <li>下次观察点</li>
+  </ol>
+
+  <h2>合规要求</h2>
+  <ul>
+    <li>不使用“必买”“稳赚”“保证”“一定”等保证性表述。</li>
+    <li>不编造净值、涨跌幅、资讯标题或来源链接。</li>
+    <li>建议必须可追溯到持仓数据、行情信号、操作记录或已标注来源的资讯。</li>
+    <li>报告只作为投资分析辅助，不替用户做最终投资决策。</li>
+  </ul>
+
+  <p><a href="../index.html">返回 FundPilot 日度持仓分析索引</a></p>
+</main>
+</body>
+</html>
