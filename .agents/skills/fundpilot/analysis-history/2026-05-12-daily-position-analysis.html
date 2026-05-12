@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FundPilot 日度持仓分析 2026-05-12</title>
+<style>
+body {
+  margin: 0;
+  padding: 18px 14px 36px;
+  color: #24292f;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d0d7de;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 26px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d8dee4;
+  font-size: 21px;
+}
+
+h3 {
+  margin: 18px 0 8px;
+  font-size: 18px;
+}
+
+p {
+  margin: 8px 0;
+}
+
+table {
+  width: 100%;
+  margin: 12px 0;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #d0d7de;
+  vertical-align: top;
+}
+
+th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.muted {
+  color: #57606a;
+}
+
+.red {
+  color: #cf222e;
+  font-weight: 600;
+}
+
+.green {
+  color: #1a7f37;
+  font-weight: 600;
+}
+
+.blue {
+  color: #0969da;
+  font-weight: 600;
+}
+
+.card {
+  margin: 14px 0;
+  padding: 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.summary {
+  border-left: 4px solid #0969da;
+  background: #ddf4ff;
+}
+
+.warning {
+  border-left: 4px solid #9a6700;
+  background: #fff8c5;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.stat {
+  padding: 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #f6f8fa;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 20px;
+}
+
+.footer {
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 1px solid #d0d7de;
+  color: #57606a;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>FundPilot 日度持仓分析（2026-05-12）</h1>
+  <p class="muted">分析日期：2026-05-12 | 生成时间：2026-05-12 12:42 CST | 分析者：Composer 2 Fast（Automation）</p>
+
+  <section class="card summary">
+    <h2>一句话结论</h2>
+    <p>整体接近成本线、小幅浮亏；策略信号以观望为主，科技半导体暴露高、波动需重点跟踪。</p>
+    <ul>
+      <li>今日主动作：以观望为主：未出现批量“买入/暂停”信号；019670 忽略 CLI 动作。</li>
+      <li>资金纪律：当前无定投计划记录；若后续启用定投，仍应保留现金垫并遵守默认策略阈值。</li>
+      <li>主要风险：海外科技拥挤交易预期反复 + QDII 净值披露滞后 + 单基权重股波动对组合的放大效应。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>数据来源与缺口</h2>
+    <ul>
+      <li>持仓数据：FundPilot 本地 SQLite（position list 22 条，2026-05-11 更新时间戳）；估算市值按证券之星基金频道披露净值逐只相乘求和。</li>
+      <li>行情数据：日间估值/涨跌幅口径来自天天基金 JSONP（FundPilot signal）；019670 当日接口失败。第三方单位净值用于估算市值与核对部分走势。</li>
+      <li>策略信号：signal today-all：失败（error=ERROR，message 指向 019670 行情拉取失败）。逐基兜底：signal today 成功 21/22，失败 019670（且同日 eastmoney 行情仍不可用）。</li>
+      <li>资讯检索：对前五大权重（025209、025500、006479、022500、016874）及失败基 019670 进行网页检索；仅收录可打开来源链接。</li>
+      <li>数据缺口：① 报告日 2026-05-12：多只 QDII/LOF 净值最新披露日为 2026-05-08（如 006479、016057、161130 等），与 A 股/部分联接 2026-05-11 披露混档，浮盈为估算；② 019670 CLI 无信号，策略理由需待行情恢复后再算；③ 资讯为公开市场信息摘录，非个性化研究结论；④ 本地无 operation/plan 记录，实操需自行留痕。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>持仓概览</h2>
+    <div class="stats">
+      <div class="stat"><strong>22</strong><span>持仓基金</span></div>
+      <div class="stat"><strong>约 6.08 万</strong><span>估算市值</span></div>
+      <div class="stat"><strong>约 -70 元</strong><span>浮动盈亏</span></div>
+      <div class="stat"><strong>约 -0.11%</strong><span>浮盈亏率</span></div>
+      <div class="stat"><strong>中高</strong><span>组合风险</span></div>
+    </div>
+    <p>组合高度分散在科技成长（A股半导体/通信 + 海外纳指 + QDII制造/创新药）与少量红利/周期卫星仓。按证券之星净值估算，总市值约 6.08 万元，整体浮亏约 70 元。019670 因接口问题在 CLI 中无信号，但第三方净值显示浮亏主要集中在此小仓位。<br><br><strong>CLI 执行摘要：</strong>fund list ✓；position list ✓；plan list ✓（0 条）；strategy list ✓；operation list ✓（0 条）；signal today-all ✗（ERROR，019670 行情）；signal today 逐基 21/22 ✓（失败：019670）。</p>
+  </section>
+
+  <section>
+    <h2>单只基金诊断</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>代码</th>
+          <th>名称</th>
+          <th>类型/主题</th>
+          <th>仓位状态</th>
+          <th>当日信号</th>
+          <th>简洁建议</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>025209</td><td>永赢先锋半导体智选混合C</td><td>混合/半导体</td><td>权重约18.73%；浮盈浮亏约 -6 元（第三方净值估算）</td><td>hold（跌约0.94%）</td><td>最大权重，单基波动决定组合体感。</td></tr>
+<tr><td>025500</td><td>东方阿尔法科技智选混合C</td><td>混合/科技</td><td>权重约14.66%；浮盈浮亏约 +145 元（第三方净值估算）</td><td>hold（跌约1.33%）</td><td>科技智选高弹性，控制追高冲动。</td></tr>
+<tr><td>006479</td><td>广发纳斯达克100ETF联接C</td><td>QDII/纳指</td><td>权重约11.78%；浮盈浮亏约 -2 元（第三方净值估算）</td><td>hold（小涨约0.28%）</td><td>纳指链路QDII，关注净值披露滞后。</td></tr>
+<tr><td>022500</td><td>国泰全指通信设备ETF联接E</td><td>指数/通信设备</td><td>权重约10.48%；浮盈浮亏约 -6 元（第三方净值估算）</td><td>hold（涨约0.85%）</td><td>通信设备权重高，关注交易拥挤度。</td></tr>
+<tr><td>016874</td><td>广发远见智选混合C</td><td>混合</td><td>权重约6.84%；浮盈浮亏约 -48 元（第三方净值估算）</td><td>hold（跌约0.83%）</td><td>权重大，波动影响组合显著。</td></tr>
+<tr><td>022726</td><td>博时科创板芯片ETF联接C</td><td>指数/科创芯片</td><td>权重约4.69%；浮盈浮亏约 -2 元（第三方净值估算）</td><td>hold（涨约0.50%）</td><td>芯片波动大，贴近暂停观察区。</td></tr>
+<tr><td>012920</td><td>易方达全球成长精选混合A</td><td>QDII/全球成长</td><td>权重约4.53%；浮盈浮亏约 -1 元（第三方净值估算）</td><td>hold（小涨约0.07%）</td><td>全球成长仓位，关注海外波动。</td></tr>
+<tr><td>012922</td><td>易方达全球成长精选混合C</td><td>QDII/全球成长</td><td>权重约4.53%；浮盈浮亏约 -1 元（第三方净值估算）</td><td>hold（小涨约0.07%）</td><td>同系C份额，策略一致。</td></tr>
+<tr><td>016823</td><td>天弘全球新能源汽车C</td><td>QDII/新能源车</td><td>权重约3.72%；浮盈浮亏约 -1 元（第三方净值估算）</td><td>hold（小涨约0.08%）</td><td>新能源车QDII，注意汇率时差。</td></tr>
+<tr><td>018419</td><td>广发碳中和主题混合C</td><td>混合/碳中和</td><td>权重约3.64%；浮盈浮亏约 +11 元（第三方净值估算）</td><td>hold（跌约1.11%）</td><td>碳中和主题，未到加倍点。</td></tr>
+<tr><td>004433</td><td>南方有色金属ETF联接C</td><td>指数/有色</td><td>权重约3.60%；浮盈浮亏约 -0 元（第三方净值估算）</td><td>hold（估值跌约0.70%）</td><td>未触买入阈值，维持原计划。</td></tr>
+<tr><td>016057</td><td>博时纳斯达克100ETF联接C</td><td>QDII/纳指</td><td>权重约3.24%；浮盈浮亏约 -1 元（第三方净值估算）</td><td>hold（小涨约0.28%）</td><td>联接暂停申购，留意申赎规则。</td></tr>
+<tr><td>025687</td><td>国泰半导体制造精选混合C</td><td>混合/半导体制造</td><td>权重约3.17%；浮盈浮亏约 +20 元（第三方净值估算）</td><td>hold（涨约1.98%）</td><td>半导体制造高弹性，贴近策略上限。</td></tr>
+<tr><td>019173</td><td>摩根纳斯达克100指数C</td><td>QDII/纳指</td><td>权重约3.02%；浮盈浮亏约 -1 元（第三方净值估算）</td><td>hold（小涨约0.28%）</td><td>纳指工具型，留意限额规则。</td></tr>
+<tr><td>012538</td><td>华宝细分化工ETF联接C</td><td>指数/化工</td><td>权重约1.49%；浮盈浮亏约 -0 元（第三方净值估算）</td><td>hold（跌约1.00%）</td><td>化工回撤未到加倍条件。</td></tr>
+<tr><td>018044</td><td>天弘纳斯达克100指数C</td><td>QDII/纳指</td><td>权重约1.20%；浮盈浮亏约 -0 元（第三方净值估算）</td><td>hold（小涨约0.28%）</td><td>纳指工具型，信号与同类一致。</td></tr>
+<tr><td>008190</td><td>国泰中证钢铁ETF联接C</td><td>指数/钢铁</td><td>权重约0.26%；浮盈浮亏约 +0 元（第三方净值估算）</td><td>hold（跌约1.03%）</td><td>钢铁主题卫星仓，仅纪律性观察。</td></tr>
+<tr><td>019670</td><td>广发港股创新药ETF联接A</td><td>QDII/港股创新药</td><td>权重约0.18%；浮盈浮亏约 -176 元（第三方净值估算）</td><td><span class="red">无信号</span>（CALCULATION_FAILED）</td><td>用第三方净值核对后，再考虑修正成本。</td></tr>
+<tr><td>420003</td><td>天弘永定价值成长混合A</td><td>混合/价值成长</td><td>权重约0.10%；浮盈浮亏约 -0 元（第三方净值估算）</td><td>hold（跌约1.42%）</td><td>价值成长偏小仓，观察A股风格。</td></tr>
+<tr><td>161130</td><td>易方达纳斯达克100ETF联接A</td><td>QDII/纳指LOF</td><td>权重约0.08%；浮盈浮亏约 -0 元（第三方净值估算）</td><td>hold（小涨约0.28%）</td><td>LOF小仓位，注意折溢价。</td></tr>
+<tr><td>501059</td><td>西部利得国企红利指数增强A</td><td>指数增强/国企红利</td><td>权重约0.04%；浮盈浮亏约 +0 元（第三方净值估算）</td><td>hold（跌约0.16%）</td><td>红利增强卫星仓，回撤可控。</td></tr>
+<tr><td>007467</td><td>华泰柏瑞红利低波ETF联接C</td><td>指数/红利低波</td><td>权重约0.03%；浮盈浮亏约 -0 元（第三方净值估算）</td><td>hold（小涨约0.09%）</td><td>红利低波卫星仓，波动有限。</td></tr>
+
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>行情与风格观察</h2>
+    <h3>市场环境</h3>
+    <p>美东时间 5 月 11 日媒体报道标普500与纳指续创新高，AI产业链与存储链条走强，大型科技股内部涨跌分化；同时报道也提示对拥挤交易与估值的高度分歧。（来源：新浪财经转载界面新闻，2026-05-12 页面）</p>
+    <h3>风格与行业</h3>
+    <p>你同时在 A股高弹性科技（半导体/通信）与海外纳指链条上暴露，另配港股创新药与红利低波/国企红利作风格补位；短线容易呈现“科技强波动 + QDII滞后净值”的组合特征。</p>
+    <h3>海外、汇率与商品</h3>
+    <p>同篇报道提及国际原油价格上行、贵金属普遍收涨、美元指数小幅走强等外事商品摘要；QDII 持仓仍需额外考虑汇率与交易日时差。（来源：新浪财经页面，2026-05-12）</p>
+  </section>
+
+  <section>
+    <h2>相关资讯摘要</h2>
+    <p class="muted">优先检索当天资讯；若当天信息不足，使用最近已披露信息并标注日期。</p>
+    
+<div class="card">
+  <h3>广发纳斯达克100ETF联接C（006479）— 海外科技大盘</h3>
+  <p class="muted">与组合中多只纳指QDII同向暴露，报告用于对照海外风险偏好。</p>
+  <ul>
+    <li>标题：纳指、标普500指数再创新高，西部数据、美光科技等刷新历史收盘纪录 — 来源：新浪财经（界面新闻记者江怡曼） — 网页时间：2026-05-12 — 链接：<a href="https://finance.sina.com.cn/jjxw/2026-05-12/doc-inhxqzkm1311300.shtml">https://finance.sina.com.cn/jjxw/2026-05-12/doc-inhxqzkm1311300.shtml</a></li>
+  </ul>
+</div>
+<div class="card">
+  <h3>广发港股创新药ETF联接A（019670）— 港股创新药</h3>
+  <p class="muted">本次 CLI 信号失败，资讯仅作主题背景，不代表个基短期走势。</p>
+  <ul>
+    <li>标题：今日（5.11）市场综述（港股创新药ETF走势与创新药事件梳理） — 来源：新浪财经 — 网页时间：2026-05-11 — 链接：<a href="https://finance.sina.com.cn/jjxw/2026-05-11/doc-inhxnwmm1984082.shtml">https://finance.sina.com.cn/jjxw/2026-05-11/doc-inhxnwmm1984082.shtml</a></li>
+  </ul>
+</div>
+<div class="card">
+  <h3>永赢先锋半导体智选混合C（025209）— 半导体高弹性</h3>
+  <p class="muted">组合第一大权重；以下第一条为公开基金净值披露，第二条为市场报道。</p>
+  <ul>
+    <li>标题：基金净值披露（单位净值 2.2775，日增长率 7.66%，净值日期 2026-05-11） — 来源：证券之星基金频道 — 链接：<a href="http://fund.stockstar.com/funds/025209.shtml">http://fund.stockstar.com/funds/025209.shtml</a></li>
+    <li>标题：美股科技股与存储/半导体链条强势（报道内含费城半导体指数等信息） — 来源：新浪财经（界面新闻记者江怡曼） — 网页时间：2026-05-12 — 链接：<a href="https://finance.sina.com.cn/jjxw/2026-05-12/doc-inhxqzkm1311300.shtml">https://finance.sina.com.cn/jjxw/2026-05-12/doc-inhxqzkm1311300.shtml</a></li>
+  </ul>
+</div>
+<div class="card">
+  <h3>东方阿尔法科技智选混合C（025500）— A股科技高弹性</h3>
+  <ul>
+    <li>标题：基金净值披露（单位净值 1.7821，日增长率 9.71%，净值日期 2026-05-11） — 来源：证券之星基金频道 — 链接：<a href="http://fund.stockstar.com/funds/025500.shtml">http://fund.stockstar.com/funds/025500.shtml</a></li>
+  </ul>
+</div>
+<div class="card">
+  <h3>国泰全指通信设备ETF联接E（022500）— 通信设备/光通信链条</h3>
+  <ul>
+    <li>标题：基金净值披露（单位净值 4.1017，日增长率 3.45%，净值日期 2026-05-11） — 来源：证券之星基金频道 — 链接：<a href="http://fund.stockstar.com/funds/022500.shtml">http://fund.stockstar.com/funds/022500.shtml</a></li>
+    <li>标题：光通信概念股表现（与同主题仓位对照用） — 来源：新浪财经（界面新闻记者江怡曼） — 网页时间：2026-05-12 — 链接：<a href="https://finance.sina.com.cn/jjxw/2026-05-12/doc-inhxqzkm1311300.shtml">https://finance.sina.com.cn/jjxw/2026-05-12/doc-inhxqzkm1311300.shtml</a></li>
+  </ul>
+</div>
+  </section>
+
+  <section>
+    <h2>操作建议与资金纪律</h2>
+    <ul>
+      <li>可执行动作：若你只认可 CLI 信号：今日不对 019670 做自动动作；其余基金均未到策略加减仓阈值，可先观察1-2个交易日披露。</li>
+      <li>定投处理：本地未录入定投计划；如你实际在平台有定投，请把金额与频率写回 plan 以便下次报告对齐。</li>
+      <li>再平衡观察：权重靠前的科技/半导体若继续冲高，关注是否接近策略 pause 阈值；卫星仓（钢铁/化工/红利）更多用于平滑而非驱动收益。</li>
+      <li>不建议动作：避免在 019670 行情源未恢复前，仅凭“感觉”大幅补仓；避免忽视 QDII 净值日期混档导致误判。</li>
+    </ul>
+  </section>
+
+  <section class="card warning">
+    <h2>风险提示</h2>
+    <ul>
+      <li>基金有风险，过往业绩与区间排名不代表未来；本报告不构成投资建议。</li>
+      <li>第三方净值、媒体报道与 CLI 估值可能存在口径与时差差异，请以基金合同、定期报告及代销平台披露为准。</li>
+      <li>默认策略参数（±2%/±5%/暂停±3%）仅为机械规则，不覆盖流动性、申赎限制与个人现金流约束。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>下次观察点</h2>
+    <ol>
+      <li>跟踪天天基金接口恢复情况，必要时对 019670 按 SKILL 说明用显式 cost 回填后再跑信号。</li>
+      <li>核对 QDII 最新净值披露日历（多数停留在 2026-05-08），避免把“估值”与“已披露净值”混读。</li>
+      <li>观察半导体/通信主线是否触发 default 策略的 pause 或加买阈值，并记录任何真实交易到 operation。</li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    <p>本报告基于 FundPilot 本地数据与可公开检索信息整理，仅用于投资分析辅助；所有投资决策与风险由用户自行承担。</p>
+    <p>历史索引：<a href="../index.html">FundPilot 日度持仓分析索引</a></p>
+  </footer>
+</main>
+</body>
+</html>
